@@ -197,8 +197,6 @@ menuItemsMobile.forEach(item => {
 });
 
 
-
-
 toggleButton.addEventListener('click', () => {
     // Toggle dark mode class on body
     body.classList.toggle('dark-mode');
@@ -222,13 +220,16 @@ toggleButtonM.addEventListener('click', () => {
     }
 });
 
+
 function setDarkTheme() {
     document.documentElement.style.setProperty('--body-color', '#251819');
     document.documentElement.style.setProperty('--body-color-dark', '#FFF');
     document.documentElement.style.setProperty('--title-color', '#F3F2F2');
     document.documentElement.style.setProperty('--side-bar-text', '#F3F2F2');
-    // Change the image source to night.png
+
+    // Change icons for both desktop and mobile
     toggleButton.src = './Image/Icon/night.png';
+    toggleButtonM.src = './Image/Icon/night.png';  // ✅ this line added
     account.src = './Image/Icon/dark_accounts.png';
 }
 
@@ -237,24 +238,13 @@ function setLightTheme() {
     document.documentElement.style.setProperty('--body-color-dark', '#251819');
     document.documentElement.style.setProperty('--title-color', '#282525');
     document.documentElement.style.setProperty('--side-bar-text', '#000');
-    // Add more variables for light theme
-    // Change the image source to light.png
-    toggleButton.src = './Image/Icon/light.png';
-    account.src = './Image/Icon/account.png';
 
+    // Change icons for both desktop and mobile
+    toggleButton.src = './Image/Icon/light.png';
+    toggleButtonM.src = './Image/Icon/light.png';  // ✅ this line added
+    account.src = './Image/Icon/account.png';
 }
 
-
-// Add this in your JavaScript file
-
-// document.addEventListener('DOMContentLoaded', function () {
-//     const mobileMenuIcon = document.getElementById('mobile-menu-icon');
-//     const mobileNavigation = document.getElementById('mobile-navigation');
-
-//     mobileMenuIcon.addEventListener('click', function () {
-//         mobileNavigation.style.display = mobileNavigation.style.display === 'flex' ? 'none' : 'flex';
-//     });
-// });
 
 document.addEventListener('DOMContentLoaded', function () {
     const mobileMenuIcon = document.getElementById('mobile-menu-icon');
