@@ -1,14 +1,12 @@
 // JavaScript code to add and remove the "active" class on click
 const menuItems = document.querySelectorAll('.menu-item-side-bar li');
-const menuItemsMobile= document.querySelectorAll('.menu-item-side-bar-m li')
+const menuItemsMobile = document.querySelectorAll('.menu-item-side-bar-m li')
 const scrollBarOut = document.querySelector('.scroll-bar-out');
 const scrollBarIn = document.querySelector('.scroll-bar-in');
 const account = document.querySelector('#account');
-const accountM = document.querySelector('#account-m');
 const sideBar = document.querySelector('#btn-food-menu');
-const displayNav = document.querySelector('#display-navbar');
 const menu = document.querySelector('.side-bar-m');
-const selectFood= document.querySelector("#select-menu-m")
+const selectFood = document.querySelector("#select-menu-m")
 
 // JavaScript code for dark/light theme toggle
 const toggleButton = document.getElementById('theme-toggle');
@@ -17,11 +15,11 @@ const body = document.body;
 
 
 
-const food=[
+const food = [
     {
-        id:1,
-        foodName:"Burger",
-        foodItem:[
+        id: 1,
+        foodName: "Burger",
+        foodItem: [
             {
                 pName: "Burger1",
                 price: "6",
@@ -38,9 +36,9 @@ const food=[
 
     },
     {
-        id:2,
-        foodName:"Pizza",
-        foodItem:[
+        id: 2,
+        foodName: "Pizza",
+        foodItem: [
             {
                 pName: "Pizza1",
                 price: "8",
@@ -56,9 +54,9 @@ const food=[
 
     },
     {
-        id:3,
-        foodName:"Cupcake",
-        foodItem:[
+        id: 3,
+        foodName: "Cupcake",
+        foodItem: [
             {
                 pName: "Cupcake1",
                 price: "9",
@@ -69,15 +67,15 @@ const food=[
                 price: "5",
                 Image: "./Image/Product/Cupcake2.jpg"
             },
-            
+
         ]
 
 
     },
     {
-        id:4,
-        foodName:"Ramen",
-        foodItem:[
+        id: 4,
+        foodName: "Ramen",
+        foodItem: [
             {
                 pName: "Ramen1",
                 price: "8",
@@ -88,15 +86,15 @@ const food=[
                 price: "7.5",
                 Image: "./Image/Product/Ramen2.jpeg"
             },
-            
+
         ]
 
 
     },
     {
-        id:5,
-        foodName:"Ice Cream",
-        foodItem:[
+        id: 5,
+        foodName: "Ice Cream",
+        foodItem: [
             {
                 pName: "Ice Cream1",
                 price: "8",
@@ -139,14 +137,14 @@ function createCard(price, name, im) {
     pLogo.textContent = '$';
     const priceValue = document.createElement('span');
     priceValue.textContent = price;
-    
+
     // Append elements to the card
     card.appendChild(image);
     card.appendChild(foodName);
     card.appendChild(foodPrice);
     foodPrice.appendChild(pLogo);
     foodPrice.appendChild(priceValue);
-   
+
     return card;
 }
 
@@ -161,14 +159,14 @@ menuItems.forEach(item => {
         // Get the index of the clicked item
         const cardContainer = document.querySelector(".food-item-image");
         console.log(cardContainer);
-        cardContainer.innerHTML="";
+        cardContainer.innerHTML = "";
         const index = Array.from(menuItems).indexOf(item);
-        food[index].foodItem.forEach(foodList=>{
-           
-            cardContainer.appendChild( createCard(foodList.price,foodList.pName,foodList.Image))
+        food[index].foodItem.forEach(foodList => {
+
+            cardContainer.appendChild(createCard(foodList.price, foodList.pName, foodList.Image))
 
         });
-       
+
         // Calculate the height based on the clicked item index
         const heightPercentage = (index + 1) * 20;
         scrollBarIn.style.height = `${heightPercentage}%`;
@@ -185,13 +183,13 @@ menuItemsMobile.forEach(item => {
         item.classList.add('active-m');
 
         // Get item from item and add it selectFood
-        selectFood.innerHTML=item.innerHTML;
+        selectFood.innerHTML = item.innerHTML;
 
         const cardContainer = document.querySelector(".food-item-image-m");
-        cardContainer.innerHTML="";
+        cardContainer.innerHTML = "";
         const index = Array.from(menuItemsMobile).indexOf(item);
-        food[index].foodItem.forEach(foodList=>{
-            cardContainer.appendChild( createCard(foodList.price,foodList.pName,foodList.Image))
+        food[index].foodItem.forEach(foodList => {
+            cardContainer.appendChild(createCard(foodList.price, foodList.pName, foodList.Image))
 
         });
 
@@ -231,11 +229,7 @@ function setDarkTheme() {
     document.documentElement.style.setProperty('--side-bar-text', '#F3F2F2');
     // Change the image source to night.png
     toggleButton.src = './Image/Icon/night.png';
-    toggleButtonM.src = './Image/Icon/night.png';
     account.src = './Image/Icon/dark_accounts.png';
-    accountM.src = './Image/Icon/dark_accounts.png';
-    sideBar.src='./Image/Icon/dark_display.png';
-    displayNav.src='./Image/Icon/dark_display.png'
 }
 
 function setLightTheme() {
@@ -246,31 +240,21 @@ function setLightTheme() {
     // Add more variables for light theme
     // Change the image source to light.png
     toggleButton.src = './Image/Icon/light.png';
-    toggleButtonM.src = './Image/Icon/light.png';
     account.src = './Image/Icon/account.png';
-    accountM.src = './Image/Icon/account.png';
-    sideBar.src='./Image/Icon/light_display.png';
-    displayNav.src='./Image/Icon/light_display.png'
 
 }
 
-function handleScroll() {
-    // Get the current scroll position
-    var scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
-
-    // Get the navbar element
-    var navbar = document.querySelector('.navbar');
-
-    // Add the sticky class if the scroll position is greater than or equal to 80px
-    if (scrollPosition >= 80) {
-        navbar.classList.add('sticky-navbar');
-    } else {
-        // Remove the sticky class if the scroll position is less than 80px
-        navbar.classList.remove('sticky-navbar');
-    }
-}
 
 // Add this in your JavaScript file
+
+// document.addEventListener('DOMContentLoaded', function () {
+//     const mobileMenuIcon = document.getElementById('mobile-menu-icon');
+//     const mobileNavigation = document.getElementById('mobile-navigation');
+
+//     mobileMenuIcon.addEventListener('click', function () {
+//         mobileNavigation.style.display = mobileNavigation.style.display === 'flex' ? 'none' : 'flex';
+//     });
+// });
 
 document.addEventListener('DOMContentLoaded', function () {
     const mobileMenuIcon = document.getElementById('mobile-menu-icon');
@@ -279,19 +263,21 @@ document.addEventListener('DOMContentLoaded', function () {
     mobileMenuIcon.addEventListener('click', function () {
         mobileNavigation.style.display = mobileNavigation.style.display === 'flex' ? 'none' : 'flex';
     });
+
+    // Show default food category (e.g., Burger)
+    if (menuItems.length > 0) {
+        menuItems[0].click(); // This will simulate a click on the first sidebar menu item
+    }
+
+    // Show default for mobile too (optional)
+    if (menuItemsMobile.length > 0) {
+        menuItemsMobile[0].click();
+    }
 });
+
 
 // Add this in your JavaScript file
 
 sideBar.addEventListener('click', function () {
     menu.style.display = menu.style.display === 'flex' ? 'none' : 'flex';
 });
-
-
-// scripts/script.js
-window.onscroll = function () {
-    // Call the function to check the scroll position
-    handleScroll();
-};
-
-
